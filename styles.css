@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OncoGuía Pro v11.0 - CSS Styles</title>
+    <style>
+/* ============================================================
+   OncoGuía Pro v11.0 - Estilos CSS Completos
+   Para OncoTech - Centro de Oncología, La Paz, BCS
+   ============================================================ */
+
+/* Variables CSS para Temas */
+:root {
+  /* Colores OncoTech */
+  --primary-red: #DC143C;
+  --primary-red-light: #FF6B8A;
+  --primary-red-dark: #B91C3C;
+  
+  /* Tema Claro */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --bg-tertiary: #E9ECEF;
+  --text-primary: #212529;
+  --text-secondary: #6C757D;
+  --text-muted: #ADB5BD;
+  --border: #DEE2E6;
+  --shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Botones mejorados con mejor contraste */
+  --btn-primary: #28A745;
+  --btn-primary-hover: #218838;
+  --btn-secondary: #007BFF;
+  --btn-secondary-hover: #0056B3;
+  --btn-success: #17A2B8;
+  --btn-success-hover: #138496;
+  --btn-warning: #FFC107;
+  --btn-warning-hover: #E0A800;
+  --btn-danger: #DC3545;
+  --btn-danger-hover: #C82333;
+  
+  /* Espaciado */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Bordes */
+  --border-radius: 0.375rem;
+  --border-radius-lg: 0.5rem;
+  --border-width: 1px;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Transiciones */
+  --transition: all 0.3s ease;
+}
+
+/* Tema Oscuro */
+[data-theme="dark"] {
+  --bg-primary: #121212;
+  --bg-secondary: #1E1E1E;
+  --bg-tertiary: #2A2A2A;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B0B0B0;
+  --text-muted: #808080;
+  --border: #404040;
+  --shadow: rgba(255, 255, 255, 0.1);
+  
+  --btn-primary: #4CAF50;
+  --btn-primary-hover: #45A049;
+  --btn-secondary: #2196F3;
+  --btn-secondary-hover: #1976D2;
+}
+
+/* Tema Verde Médico */
+[data-theme="medical-green"] {
+  --primary-red: #059669;
+  --btn-primary: #10B981;
+  --btn-primary-hover: #059669;
+}
+
+/* Tema Azul Profesional */
+[data-theme="professional-blue"] {
+  --primary-red: #3B82F6;
+  --btn-primary: #2563EB;
+  --btn-primary-hover: #1D4ED8;
+}
+
+/* Reset y Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: var(--transition);
+}
+
+/* Layout Principal */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Fijo OncoTech */
+.header {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  border-bottom: 3px solid var(--primary-red);
+  padding: var(--spacing-md) var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+}
+
+.logo-decoration {
+  width: 4px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--primary-red), var(--primary-red-light));
+  border-radius: 2px;
+}
+
+.header-info h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary-red);
+  margin-bottom: var(--spacing-xs);
+}
+
+.header-info p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.clinic-info {
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.clinic-info strong {
+  color: var(--text-primary);
+}
+
+.theme-selector {
+  background: var(--bg-primary);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-sm);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.theme-selector:hover {
+  border-color: var(--primary-red);
+}
+
+/* Contenido Principal */
+.main-content {
+  flex: 1;
+  padding: var(--spacing-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Datos del Paciente Horizontal */
+.patient-data {
+  background: var(--bg-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  border: var(--border-width) solid var(--border);
+}
+
+.patient-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+  gap: var(--spacing-md);
+  align-items: end;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.form-group input,
+.form-group select {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--border-radius);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 2px rgba(220, 20, 60, 0.1);
+}
+
+/* Cálculos Automáticos */
+.calculations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: var(--border-width) solid var(--border);
+}
+
+.calculation-item {
+  text-align: center;
+  padding: var(--spacing-sm);
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+}
+
+.calculation-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.calculation-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-red);
+}
+
+/* Pestañas de Navegación */
+.tab-navigation {
+  background: var(--bg-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  border: var(--border-width) solid var(--border);
+}
+
+.tab-buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.tab-button {
+  flex: 1;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: transparent;
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.tab-button:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.tab-button.active {
+  background: var(--primary-red);
+  color: white;
+}
+
+.tab-button i {
+  font-size: 1.1rem;
+}
+
+/* Área de Preview */
+.preview-area {
+  background: var(--bg-primary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: var(--border-width) solid var(--border);
+  overflow: hidden;
+}
+
+.preview-header {
+  background: var(--bg-secondary);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: var(--border-width) solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preview-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.export-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+/* Botones Mejorados */
+.btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.btn-primary {
+  background: var(--btn-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--btn-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background: var(--btn-secondary);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: var(--btn-secondary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-success {
+  background: var(--btn-success);
+  color: white;
+}
+
+.btn-success:hover {
+  background: var(--btn-success-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-warning {
+  background: var(--btn-warning);
+  color: var(--text-primary);
+}
+
+.btn-warning:hover {
+  background: var(--btn-warning-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-danger {
+  background: var(--btn-danger);
+  color: white;
+}
+
+.btn-danger:hover {
+  background: var(--btn-danger-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-sm {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.8rem;
+}
+
+.btn-lg {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1rem;
+}
+
+/* Contenido del Preview */
+.preview-content {
+  padding: var(--spacing-xl);
+  min-height: 500px;
+  background: white;
+  color: #333;
+  position: relative;
+}
+
+.document-preview {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.document-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--primary-red);
+}
+
+.document-logo {
+  height: 60px;
+  margin-bottom: var(--spacing-md);
+}
+
+.document-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-red);
+  margin-bottom: var(--spacing-sm);
+}
+
+.document-subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Formularios Específicos por Pestaña */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.form-section {
+  background: var(--bg-primary);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-md);
+  border: var(--border-width) solid var(--border);
+}
+
+.form-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-red);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Panel de Laboratorios Clickeable */
+.lab-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.lab-category {
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  border: var(--border-width) solid var(--border);
+}
+
+.lab-category-title {
+  font-weight: 600;
+  color: var(--primary-red);
+  margin-bottom: var(--spacing-md);
+  font-size: 0.95rem;
+}
+
+.lab-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.lab-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.lab-checkbox:hover {
+  background: var(--bg-tertiary);
+}
+
+.lab-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.lab-checkbox label {
+  cursor: pointer;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+/* Esquemas de Quimioterapia */
+.scheme-selector {
+  margin-bottom: var(--spacing-lg);
+}
+
+.scheme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.scheme-card {
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  border: var(--border-width) solid var(--border);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.scheme-card:hover {
+  border-color: var(--primary-red);
+  box-shadow: var(--shadow-md);
+}
+
+.scheme-card.selected {
+  border-color: var(--primary-red);
+  background: rgba(220, 20, 60, 0.05);
+}
+
+.scheme-name {
+  font-weight: 600;
+  color: var(--primary-red);
+  margin-bottom: var(--spacing-xs);
+}
+
+.scheme-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.scheme-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Alertas y Notificaciones */
+.alert {
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-md);
+  border-left: 4px solid;
+}
+
+.alert-info {
+  background: rgba(23, 162, 184, 0.1);
+  border-color: var(--btn-success);
+  color: var(--btn-success-hover);
+}
+
+.alert-warning {
+  background: rgba(255, 193, 7, 0.1);
+  border-color: var(--btn-warning);
+  color: var(--btn-warning-hover);
+}
+
+.alert-danger {
+  background: rgba(220, 53, 69, 0.1);
+  border-color: var(--btn-danger);
+  color: var(--btn-danger-hover);
+}
+
+/* Loading States */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  color: var(--text-secondary);
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--border);
+  border-top: 3px solid var(--primary-red);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: var(--spacing-sm);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .header-content {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .main-content {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    text-align: center;
+  }
+  
+  .clinic-info {
+    text-align: center;
+  }
+  
+  .patient-form {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .calculations {
+    grid-template-columns: 1fr;
+  }
+  
+  .tab-buttons {
+    flex-wrap: wrap;
+  }
+  
+  .tab-button {
+    min-width: 120px;
+  }
+  
+  .export-buttons {
+    flex-wrap: wrap;
+  }
+  
+  .preview-content {
+    padding: var(--spacing-md);
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .lab-panel {
+    grid-template-columns: 1fr;
+  }
+  
+  .scheme-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-left {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .logo-container {
+    flex-direction: column;
+  }
+  
+  .header-info h1 {
+    font-size: 1.25rem;
+  }
+  
+  .tab-button {
+    padding: var(--spacing-sm);
+    font-size: 0.8rem;
+  }
+  
+  .btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.8rem;
+  }
+}
+
+/* Print Styles */
+ {
+  .header,
+  .tab-navigation,
+  .export-buttons {
+    display: none !important;
+  }
+  
+  .preview-content {
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-content {
+    padding: 0;
+  }
+  
+  body {
+    background: white;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Estados de Focus mejorados para accesibilidad */
+*:focus {
+  outline: 2px solid var(--primary-red);
+  outline-offset: 2px;
+}
+
+.btn:focus {
+  outline: 2px solid var(--primary-red);
+  outline-offset: 2px;
+}
+
+/* Mejoras de contraste para textos pequeños */
+.small-text {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Estilos para campos requeridos */
+.required::after {
+  content: " *";
+  color: var(--btn-danger);
+}
+
+/* Mejoras para dropdowns */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+/* Estilos para tooltips */
+.tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+    </style>
+</head>
+<body>
+    <div style="padding: 2rem; text-align: center; background: var(--bg-primary); color: var(--text-primary);">
+        <h1 style="color: var(--primary-red); margin-bottom: 1rem;">OncoGuía Pro v11.0 - CSS Styles</h1>
+        <p>Este archivo contiene todos los estilos CSS para OncoGuía Pro v11.0</p>
+        <p style="color: var(--text-secondary); margin-top: 1rem;">
+            Copie el contenido CSS de la etiqueta &lt;style&gt; y guárdelo como <strong>css/styles.css</strong>
+        </p>
+        
+        <div style="margin-top: 2rem; padding: 1rem; background: var(--bg-secondary); border-radius: 0.5rem; border-left: 4px solid var(--primary-red);">
+            <h3>Características incluidas:</h3>
+            <ul style="text-align: left; max-width: 600px; margin: 1rem auto;">
+                <li>✅ Variables CSS para temas completos</li>
+                <li>✅ Modo oscuro funcional</li>
+                <li>✅ Colores con mejor contraste</li>
+                <li>✅ Botones mejorados y más claros</li>
+                <li>✅ Layout horizontal responsive</li>
+                <li>✅ Estilos para panel de laboratorios clickeable</li>
+                <li>✅ Animaciones y transiciones suaves</li>
+                <li>✅ Print styles optimizados</li>
+                <li>✅ Accesibilidad mejorada</li>
+                <li>✅ Responsive design completo</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDiuIrQG4GoeX1D06rm0KRDCfB1zShwdDtlNIXpqG2keoDXYpQYRnSaYzITs%2Fp99mqrkUZT3kRtXMF1ha5BT1YtnE43q1uUP1eDDUeAob%2BKjABDxqoX%2Fi6v8E0V4OhMlT2xZs9MlBSMXEKV7L2IWixWipUZwI7JjNj2zVlrHsKz%2BMAd%2BSvF3chQ0NBTbqY7XX2GuJ94K6RPARvITu1CWOLQXS0dHbjTTzZiLtZUmXxvq5sm7SiqnZp1N17uUG%2F%2BynUjgItPAeCeUXEa0qKREHDEgps06Z5djCQapFzu2DJ0auPpg0tn7TZPmwtGe4Ng402fVvn6lUKnRVgcaMpWzCx9SExd8oSYjX2ERV9Ib93bhwkJSypwRS06ZnDqrMWwyBAGvqSvFETrAn49RGjnDu7voc%2BQ70%2BKGxp8VZESAkYubXdVqaF6SWNidEGuV6c7zrhg9brYyIO49poEQE%2BdlXTSRZURkEExFoil4ozEanb4D%2BV%2B%2FMMtYAUHujQloOLuku%2FA%3D%3D";
+        window.__genspark_locale = "es-ES";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDiuIrQG4GoeX1D06rm0KRDCfB1zShwdDtlNIXpqG2keoDXYpQYRnSaYzITs/p99mqrkUZT3kRtXMF1ha5BT1YtnE43q1uUP1eDDUeAob+KjABDxqoX/i6v8E0V4OhMlT2xZs9MlBSMXEKV7L2IWixWipUZwI7JjNj2zVlrHsKz+MAd+SvF3chQ0NBTbqY7XX2GuJ94K6RPARvITu1CWOLQXS0dHbjTTzZiLtZUmXxvq5sm7SiqnZp1N17uUG/+ynUjgItPAeCeUXEa0qKREHDEgps06Z5djCQapFzu2DJ0auPpg0tn7TZPmwtGe4Ng402fVvn6lUKnRVgcaMpWzCx9SExd8oSYjX2ERV9Ib93bhwkJSypwRS06ZnDqrMWwyBAGvqSvFETrAn49RGjnDu7voc+Q70+KGxp8VZESAkYubXdVqaF6SWNidEGuV6c7zrhg9brYyIO49poEQE+dlXTSRZURkEExFoil4ozEanb4D+V+/MMtYAUHujQloOLuku/A==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
